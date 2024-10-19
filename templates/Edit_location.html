@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Location_creation</title>
+</head>
+<body>
+<h2>Создание локации</h2>
+<h2> тип {{ location_type }} </h2>
+<h2>{{ text }}</h2>
+<h2>////\\\\</h2>
+<form method="post">
+        {% csrf_token %}
+        <h2>
+            <label for = "location_name">Имя локации:</label>
+            <input type = "text" id = "location_name" name = "location_name" maxlength="30" required>
+        </h2>
+        <h2>
+            <label for = "description">Введите описание локации:</label>
+            <textarea id = "description" name = "description" maxlength="70" required></textarea>
+        </h2>
+{% if location_type == 'Пустая' %}
+        <h2>
+            <label for = "is_it_tech">Является ли локация технической:</label>
+            <input type = "checkbox" id = "is_it_tech" name = "is_it_tech" maxlength="70" required>
+        </h2>
+{% elif location_type == 'Бой' %}
+        <h2>
+            <label for = "enemy_name">Введите имя врага:</label>
+            <input type = "text" id = "enemy_name" name = "enemy_name" maxlength="70" required>
+        </h2>
+{% elif location_type == 'Ловушка' %}
+    <h2>
+        <label for = "trap_description">Введите имя врага:</label>
+        <textarea id = "trap_description" name = "trap_description" maxlength="70" required></textarea>
+    </h2>
+    <h2>
+        <label for = "trap_activation_chance">Введите имя врага:</label>
+        <input type = "text" id = "trap_activation_chance" name = "trap_activation_chance" maxlength="70" required>
+    </h2>
+    <h2>
+        <label for = "trap_damage_min">Введите имя врага:</label>
+        <input type = "text" id = "trap_damage_min" name = "trap_damage_mine" maxlength="70" required>
+    </h2>
+    <h2>
+        <label for = "trap_damage_max">Введите имя врага:</label>
+        <input type = "text" id = "trap_damage_max" name = "trap_damage_max" maxlength="70" required>
+    </h2>
+    <h2>
+        <label for = "trap_exists">Есть ли ловушка в локации:</label>
+        <input type = "checkbox" id = "trap_exists" name = "trap_exists" maxlength="70" required>
+    </h2>
+    <h2>
+        <label for = "trap_found">Найдела ли ловушка при входе:</label>
+        <input type = "checkbox" id = "trap_found" name = "trap_found" maxlength="70">
+    </h2>
+{% elif location_type == 'Загадка' %}
+        <h2>
+            <label for = "riddle_answer">Ответ на загадку:</label>
+            <input type = "text" id = "riddle_answer" name = "riddle_answer" maxlength="30" required>
+        </h2>
+        <h2>
+            <label for = "riddle_solved_text">Введите текст при решении загадки:</label>
+            <textarea id = "riddle_solved_text" name = "riddle_solved_text" maxlength="70" required></textarea>
+        </h2>
+{% endif %}
+        <button type="submit">Создать {{ location_type }}</button>
+</form>
+<h2>\\\\////</h2>
+<h2>////\\\\</h2>
+{% for location in Locations %}
+    <ul>
+        <li align="left"> Id локации: {{ location.id_number }} | Название: {{ location.location_name }} |
+                          Тип: {{ location.location_type }} |
+        </li>
+    </ul>
+{% endfor %}
+<h2>\\\\////</h2>
+{% if location_type == 'Бой' %}
+<h2>////\\\\</h2>
+    {% for enemy in Enemies %}
+    <ul>
+        <li align="left"> Название: {{ enemy.name }} | Описание: {{ enemy.enemy_description }}
+        </li>
+    </ul>
+    {% endfor %}
+<h2>\\\\////</h2>
+{% endif %}
+</body>
+</html>
+

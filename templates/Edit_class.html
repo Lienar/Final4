@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Class_creation</title>
+</head>
+<body>
+<h2>{{ text }}</h2>
+<form method="post">
+        {% csrf_token %}
+    <h3>
+        <label for = "class_name">Введите имя класса:</label>
+        <input type = "text" id = "class_name" name = "class_name" maxlength="30" required>
+    </h3>
+    <h3>
+        <label for = "class_description">Введите описание класса:</label>
+        <textarea id = "class_description" name = "class_description" maxlength="70" required></textarea>
+    </h3>
+    <h3>
+        <label for = "class_health">Введите базовое здоровье:</label>
+        <input type = "text" id = "class_health" name = "class_health" maxlength="30" required>
+    </h3>
+    <h3>
+        <label for = "class_inventory">Введите ИД инвенторя:</label>
+        <input type = "text" id = "class_inventory" name = "class_inventory" maxlength="30" required>
+    </h3>
+        <button type="submit">Создать class</button>
+    </form>
+    <h2>Варианты инвенторей:</h2>
+    {% for inventory in inventories %}
+    <ul>
+        <li align="left">
+            <h2>
+            Id инвенторя: {{ inventory.0 }}
+            </h2>
+            <h3>
+                {% for item in inventory.1 %}
+                Предмет {{ item.item_name }}   |
+                {% endfor %}
+            </h3>
+        </li>
+    </ul>
+    {% endfor %}
+</body>
+</html>
+
+
+

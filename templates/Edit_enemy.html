@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Enemy_editor</title>
+</head>
+<body>
+<h2>{{ text }}</h2>
+<form method="post">
+        {% csrf_token %}
+    <h2>
+        <label for = "name">Выбериет имя врага:</label>
+        <input type = "text" id = "name" name = "name" maxlength="30" required>
+    </h2>
+    <h2>
+        <label for = "enemy_description">введите описание врага:</label>
+        <textarea id = "enemy_description" name = "enemy_description" maxlength="70" required></textarea>
+    </h2>
+    <h2>
+        <label for = "health">введите размер здоровья врага:</label>
+        <input type = "text" id = "health" name = "health" maxlength="30" required>
+    </h2>
+    <h2>
+        <label for = "enemy_skill1_id">Выбериет ИД первого навыка:</label>
+        <input type = "text" id = "enemy_skill1_id" name = "enemy_skill1_id" maxlength="30" required>
+    </h2>
+    <h2>
+        <label for = "enemy_skill2_id">Выбериет ИД первого навыка:</label>
+        <input type = "text" id = "enemy_skill2_id" name = "enemy_skill2_id" maxlength="30" required>
+    </h2>
+        <button type="submit">Создать предмет</button>
+    </form>
+<h2>Существующие враги:</h2>
+    {% for enemy in enemies %}
+    <ul>
+        <li align="left"> Название: {{ enemy.name }} | здоровье: {{ enemy.health }}
+            <a>Описание: {{ skill.enemy_description }}</a>
+        </li>
+    </ul>
+    {% endfor %}
+<h2>Умения врагов</h2>
+    {% for skill in skills %}
+    <ul>
+        <li align="left"> Название: {{ skill.skill_name }} | Мнимальный урон: {{ skill.skill_effect_min }} | Максимальный урон: {{ skill.skill_effect_max }}
+            Презарядка: {{ skill.item_cooldown }} | ID навыка {{ skill.skill_id }}
+            <h4>Тип: {{ skill.skill_type }} |
+            Описание: {{ skill.skill_description }}</h4>
+        </li>
+    </ul>
+    {% endfor %}
+</body>
+</html>

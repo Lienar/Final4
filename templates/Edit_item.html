@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Item_creator</title>
+</head>
+<body>
+<h2>Создание предмета:</h2>
+    <form method="post">
+        {% csrf_token %}
+    <h2>
+        <label for = "item_name">Ваше имя:</label>
+        <input type = "text" id = "item_name" name = "item_name" maxlength="30" required>
+    </h2>
+    <h2>
+        <label for = "description">Выбериет класс указав его ИД:</label>
+        <textarea id = "description" name = "description" maxlength="70" required></textarea>
+    </h2>
+    <h2>
+        <label for = "item_type">Укажите тип предмета:</label>
+        <input type = "text" id = "item_type" name = "item_type" maxlength="30" required>
+    </h2>
+    <h2>
+        <label for = "skill_description">Опишите действие предмета:</label>
+        <textarea id = "skill_description" name = "skill_description" maxlength="70" required></textarea>
+    </h2>
+    <h2>
+        <label for = "skill_effect_min">Выбериет минимальный размер эффекта:</label>
+        <input type = "text" id = "skill_effect_min" name = "skill_effect_min" maxlength="30" required>
+    </h2>
+    <h2>
+        <label for = "skill_effect_max">Выбериет максимальный размер эффекта:</label>
+        <input type = "text" id = "skill_effect_max" name = "skill_effect_max" maxlength="30" required>
+    </h2>
+    <h2>
+        <label for = "skill_cooldown">Введите длительность перезарядки:</label>
+        <input type = "text" id = "skill_cooldown" name = "skill_cooldown" maxlength="30" required>
+    </h2>
+
+        <button type="submit">Создать предмет</button>
+    </form>
+<h2> Типы предметов</h2>
+    {% for item_type in item_types %}
+    <ul>
+        <li align="left"> тип: {{ item_type }}</a>
+        </li>
+    </ul>
+    {% endfor %}
+<h2> Существующие предметы</h2>
+    {% for item in items %}
+    <ul>
+        <li align="left"> Название: {{ item.item_name }} | Мнимальный урон: {{ item.skill_effect_min }} | Максимальный урон: {{ item.skill_effect_max }}
+            Презарядка: {{ item.item_cooldown }}  <h4>Описание: {{ item.description }}</h4>
+        </li>
+    </ul>
+    {% endfor %}
+
+</body>
+</html>

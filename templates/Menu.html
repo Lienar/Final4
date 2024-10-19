@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Menu</title>
+</head>
+<body>
+<h1>Здравствуйте</h1>
+
+<h2>Меню</h2>
+<h1>////\\\\</h1>
+{% if player_name != '' %}
+<h2><b><a class="page-link" href="http://127.0.0.1:8000/Enter/">
+           Начать новую игру
+        </a></b></h2>
+<h2><b><a class="page-link" href="http://127.0.0.1:8000/Enter/?player_name={{ player_name }}">
+           Продолжить играть (если имя пользователя совпадает с героем)
+        </a></b></h2>
+<h2><b><a class="page-link" href="http://127.0.0.1:8000/Redactor/">
+           Редактор
+        </a></b></h2>
+{% else %}
+<h2><b><a class="page-link" href="http://127.0.0.1:8000/Enter/">
+           Начать новую игру
+        </a></b></h2>
+<h2><b><a class="page-link" href="http://127.0.0.1:8000/Redactor/">
+           Редактор
+        </a></b></h2>
+{% endif %}
+<h1>\\\\////</h1>
+</body>
+</html>

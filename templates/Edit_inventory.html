@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Inventory_editor</title>
+</head>
+<body>
+<form method="post">
+        {% csrf_token %}
+    <h2>
+        <label for = "item1">Введите ИД 1-ого предмета:</label>
+        <input type = "text" id = "item1" name = "item1" maxlength="30" required>
+    </h2>
+    <h2>
+        <label for = "item2">Введите ИД 2-ого предмета:</label>
+        <input type = "text" id = "item2" name = "item2" maxlength="30" required>
+    </h2>
+    <h2>
+        <label for = "item3">Введите ИД 3-ого предмета:</label>
+        <input type = "text" id = "item3" name = "item3" maxlength="30" required>
+    </h2>
+    <h2>
+        <label for = "item4">Введите ИД 4-ого предмета:</label>
+        <input type = "text" id = "item4" name = "item4" maxlength="30" required>
+    </h2>
+    <h2>
+        <label for = "item5">Введите ИД 5-ого предмета:</label>
+        <input type = "text" id = "item5" name = "item5" maxlength="30" required>
+    </h2>
+    <h2>
+        <label for = "item6">Введите ИД 6-ого предмета:</label>
+        <input type = "text" id = "item6" name = "item6" maxlength="30" required>
+    </h2>
+    <button type="submit">Создать предмет</button>
+    </form>
+    {% for item in items %}
+    <ul>
+        <li align="left"> Название: {{ item.item_name }} | Мнимальный урон: {{ item.damage_min }} | Максимальный урон: {{ item.damage_max }}
+            Презарядка: {{ item.skill_cooldown }}  <h4>Описание: {{ item.description }}</h4>
+        </li>
+    </ul>
+    {% endfor %}
+
+</body>
+</html>

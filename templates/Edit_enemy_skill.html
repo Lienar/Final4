@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Enemy_skill_editor</title>
+</head>
+<body>
+<form method="post">
+        {% csrf_token %}
+    <h2>
+        <label for = "skill_name">Выбериет класс указав его ИД:</label>
+        <input type = "text" id = "skill_name" name = "skill_name" maxlength="30" required>
+    </h2>
+    <h2>
+        <label for = "skill_description">Укажите тип предмета:</label>
+        <textarea id = "skill_description" name = "skill_description" maxlength="70" required></textarea>
+    </h2>
+    <h2>
+        <label for = "skill_effect_min">Опишите действие предмета:</label>
+        <input type = "text" id = "skill_effect_min" name = "skill_effect_min" maxlength="30" required>
+    </h2>
+    <h2>
+        <label for = "skill_effect_max">Выбериет минимальный размер эффекта:</label>
+        <input type = "text" id = "skill_effect_max" name = "skill_effect_max" maxlength="30" required>
+    </h2>
+    <h2>
+        <label for = "skill_cooldown">Выбериет максимальный размер эффекта:</label>
+        <input type = "text" id = "skill_cooldown" name = "skill_cooldown" maxlength="30" required>
+    </h2>
+    <h2>
+        <label for = "skill_type">Введите длительность перезарядки:</label>
+        <input type = "text" id = "skill_type" name = "skill_type" maxlength="30" required>
+    </h2>
+    <button type="submit">Создать предмет</button>
+    </form>
+<h2>Типы умений</h2>
+    {% for skill_type in skill_types %}
+    <ul>
+        <li align="left"> тип: {{ skill_type }}</a>
+        </li>
+    </ul>
+    {% endfor %}
+<h2>Существующие умения</h2>
+    {% for skill in skills %}
+    <ul>
+        <li align="left"> Название: {{ skill.skill_name }} | Мнимальный урон: {{ skill.skill_effect_min }} | Максимальный урон: {{ skill.skill_effect_max }}
+            Презарядка: {{ skill.item_cooldown }}
+            <a>Тип: {{ skill.skill_type }}</a>
+            <a>Описание: {{ skill.skill_description }}</a>
+        </li>
+    </ul>
+    {% endfor %}
+
+</body>
+</html>
