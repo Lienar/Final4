@@ -163,7 +163,7 @@ def Redactor_item_page(request):
         item_id = len(items) + 1
         item_name = request.POST.get('item_name')
         item_type = request.POST.get('item_type')
-        description = request.POST.get('description ')
+        description = request.POST.get('description')
         skill_description = request.POST.get('skill_description')
         skill_effect_min = int(request.POST.get('skill_effect_min'))
         skill_effect_max = int(request.POST.get('skill_effect_max'))
