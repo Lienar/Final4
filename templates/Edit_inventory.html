@@ -6,32 +6,32 @@
 </head>
 <body>
 <form method="post">
-        {% csrf_token %}
+           {% csrf_token %}
     <h2>
-        <label for = "item1">Введите ИД 1-ого предмета:</label>
-        <input type = "text" id = "item1" name = "item1" maxlength="30" required>
+        <label for = "skill_name">Укажите название способности:</label>
+        <input type = "text" id = "skill_name" name = "skill_name" maxlength="30" required>
     </h2>
     <h2>
-        <label for = "item2">Введите ИД 2-ого предмета:</label>
-        <input type = "text" id = "item2" name = "item2" maxlength="30" required>
+        <label for = "skill_description">Напишите описание способности:</label>
+        <textarea id = "skill_description" name = "skill_description" maxlength="70" required></textarea>
     </h2>
     <h2>
-        <label for = "item3">Введите ИД 3-ого предмета:</label>
-        <input type = "text" id = "item3" name = "item3" maxlength="30" required>
+        <label for = "skill_effect_min">Укажите минимальное значение для эффекта:</label>
+        <input type = "text" id = "skill_effect_min" name = "skill_effect_min" maxlength="30" required>
     </h2>
     <h2>
-        <label for = "item4">Введите ИД 4-ого предмета:</label>
-        <input type = "text" id = "item4" name = "item4" maxlength="30" required>
+        <label for = "skill_effect_max">Укажите максимальное значение для эффекта:</label>
+        <input type = "text" id = "skill_effect_max" name = "skill_effect_max" maxlength="30" required>
     </h2>
     <h2>
-        <label for = "item5">Введите ИД 5-ого предмета:</label>
-        <input type = "text" id = "item5" name = "item5" maxlength="30" required>
+        <label for = "skill_cooldown">Выбериет кол-во ходов на перезарядку:</label>
+        <input type = "text" id = "skill_cooldown" name = "skill_cooldown" maxlength="30" required>
     </h2>
     <h2>
-        <label for = "item6">Введите ИД 6-ого предмета:</label>
-        <input type = "text" id = "item6" name = "item6" maxlength="30" required>
+        <label for = "skill_type">Введите тип способности:</label>
+        <input type = "text" id = "skill_type" name = "skill_type" maxlength="30" required>
     </h2>
-    <button type="submit">Создать предмет</button>
+    <button type="submit">Создать способность</button>
     </form>
     {% for item in items %}
     <ul>
