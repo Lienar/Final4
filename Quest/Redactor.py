@@ -23,7 +23,7 @@ def create_location_trap(data):
 
 def create_location_riddle(data):
     new_location_gen(data)
-    Location_enemy.objects.create(location_name=data['location_name'], description=data['description'],
+    Location_riddle.objects.create(location_name=data['location_name'], description=data['description'],
                                   riddle_answer=data['riddle_answer'], riddle_solved_text=data['riddle_solved_text'])
 
 def create_class(data):
